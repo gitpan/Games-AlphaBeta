@@ -1,0 +1,37 @@
+Games::AlphaBeta version 0.1
+============================
+
+Games::AlphaBeta provides a generic implementation of the
+AlphaBeta game-tree search algorithm (also known as MiniMax
+search with alpha beta pruning). This algorithm can be used to
+find the best move at a particular position in any two-player,
+zero-sum game with perfect information. Examples of such games
+include Chess, Othello, Connect4, Go, Tic-Tac-Toe and many other
+boardgames. 
+
+This is the initial release.
+
+
+INSTALLATION
+
+To install this module type the following:
+
+   perl Makefile.PL
+   make
+   make test
+   make install
+
+DEPENDENCIES
+
+This module inherits from Games::Sequential and will occasionally
+carp or croak rather than warn and die.
+
+COPYRIGHT AND LICENCE
+
+Copyright (C) 2004 by Stig Brautaset
+
+This library is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself, either Perl version 5.8.3 or,
+at your option, any later version of Perl 5 you may have available.
+
+
