@@ -2,6 +2,66 @@
 # arch-tag: automatic-ChangeLog--stig@brautaset.org--2004/games-alphabeta--devo--0.1
 #
 
+2004-06-12 09:25:28 GMT	Stig Brautaset <stig@brautaset.org>	patch-15
+
+    Summary:
+      fix debug output
+    Revision:
+      games-alphabeta--devo--0.1--patch-15
+
+
+    modified files:
+     Changes lib/Games/AlphaBeta.pm
+
+
+2004-06-12 07:37:49 GMT	Stig Brautaset <stig@brautaset.org>	patch-14
+
+    Summary:
+      fix pod -- remove internal part
+    Revision:
+      games-alphabeta--devo--0.1--patch-14
+
+
+    modified files:
+     Changes lib/Games/AlphaBeta.pm
+
+
+2004-06-11 23:17:01 GMT	Stig Brautaset <stig@brautaset.org>	patch-13
+
+    Summary:
+      fix indenting (2)
+    Revision:
+      games-alphabeta--devo--0.1--patch-13
+
+
+    modified files:
+     Changes lib/Games/AlphaBeta.pm
+
+
+2004-06-11 23:16:06 GMT	Stig Brautaset <stig@brautaset.org>	patch-12
+
+    Summary:
+      fix indenting
+    Revision:
+      games-alphabeta--devo--0.1--patch-12
+
+
+    modified files:
+     Changes README lib/Games/AlphaBeta.pm
+
+
+2004-06-11 23:00:13 GMT	Stig Brautaset <stig@brautaset.org>	patch-11
+
+    Summary:
+      added TODO section in pod + fixed SEE ALSO section
+    Revision:
+      games-alphabeta--devo--0.1--patch-11
+
+
+    modified files:
+     Changes META.yml lib/Games/AlphaBeta.pm
+
+
 2004-06-11 21:48:48 GMT	Stig Brautaset <stig@brautaset.org>	patch-10
 
     Summary:

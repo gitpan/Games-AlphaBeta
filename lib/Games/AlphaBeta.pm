@@ -5,7 +5,7 @@ use 5.006001;
 use strict;
 use warnings;
 
-our $VERSION = '0.12';
+our $VERSION = '0.13';
 
 =head1 NAME
 
@@ -17,7 +17,7 @@ Games::AlphaBeta - game-tree search with object oriented interface
   my $game = Games::AlphaBeta->new( ... );
 
   while ($game->abmove) {
-          print draw($game->peek_pos);
+      print draw($game->peek_pos);
   }
 
 =head1 DESCRIPTION
@@ -76,13 +76,11 @@ Games::AlphaBeta provides these new methods:
 
 =over 4
 
-=begin internal
-
 =item _init [@list]
 
-Initialize a AlphaBeta object.
+I<Internal method.>
 
-=end
+Initialize a AlphaBeta object.
 
 =cut
 
@@ -90,16 +88,16 @@ sub _init {
     my $self = shift;
     my $args = @_ && ref($_[0]) ? shift : { @_ };
     my $config = {
-		# Callbacks
-		evaluate	=> undef,
-		findmoves	=> undef,
-		endofgame	=> undef,
+        # Callbacks
+        evaluate    => undef,
+        findmoves   => undef,
+        endofgame   => undef,
 
         # Runtime variables
         ply         => 2,       # default search depth
         alpha       => -100_000,
         beta        => 100_000,
-	};
+    };
 
     # Initialise backend
     $self->SUPER::_init($args);
@@ -119,7 +117,7 @@ sub _init {
         }
     }
 
-	return $self;
+    return $self;
 }
 
 
@@ -161,7 +159,7 @@ sub abmove {
 
     if (@_) {
         $ply = shift;
-        print "Explicit ply $ply overrides default ($self->{PLY})\n" if $self->{debug};
+        print "Explicit ply $ply overrides default ($self->{ply})\n" if $self->{debug};
     }
     else {
         $ply = $self->{ply};
@@ -169,7 +167,7 @@ sub abmove {
 
     my $bestmove;
     my $pos = $self->peek_pos;
-	my @moves = $self->{findmoves}($pos)
+    my @moves = $self->{findmoves}($pos)
         or return;
 
     my $alpha = $self->{alpha};
@@ -177,9 +175,9 @@ sub abmove {
 
     print "Searching to depth $ply\n" if $self->{debug};
     $self->{found_end} = $self->{count} = 0;
-	for my $move (@moves) {
-		my $npos = $self->{move}($pos, $move) or croak "No move returned from move!";
-		my $sc = -$self->_alphabeta($npos, -$beta, -$alpha, $ply - 1);
+    for my $move (@moves) {
+        my $npos = $self->{move}($pos, $move) or croak "No move returned from move!";
+        my $sc = -$self->_alphabeta($npos, -$beta, -$alpha, $ply - 1);
 
         print "ab val: $sc" if $self->{debug};
         if ($sc > $alpha) {
@@ -196,41 +194,39 @@ sub abmove {
 }
 
 
-=begin internal
-
 =item _alphabeta $pos $alpha $beta $ply
 
-=end
+I<Internal method.>
 
 =cut
 
 sub _alphabeta {
-	my ($self, $pos, $alpha, $beta, $ply) = @_;
+    my ($self, $pos, $alpha, $beta, $ply) = @_;
     my @moves;
 
-	# Keep count of the number of positions we've seen
-	$self->{count}++;
+    # Keep count of the number of positions we've seen
+    $self->{count}++;
 
     # When using iterative deepening we can optimise for the case
     # when we find an end position at every branch (for example,
     # near the end of the game)
-	#
-	if (($self->{endofgame}($pos) && ++$self->{found_end}) || $ply <= 0) {
-		return $self->{evaluate}($pos);
-	}
+    #
+    if (($self->{endofgame}($pos) && ++$self->{found_end}) || $ply <= 0) {
+        return $self->{evaluate}($pos);
+    }
 
     return $self->{evaluate}($pos) 
         unless @moves = $self->{findmoves}($pos);
 
-	for my $move (@moves) {
-		my $npos = $self->{move}($pos, $move);
-		my $sc = -$self->_alphabeta($npos, -$beta, -$alpha, $ply - 1);
+    for my $move (@moves) {
+        my $npos = $self->{move}($pos, $move);
+        my $sc = -$self->_alphabeta($npos, -$beta, -$alpha, $ply - 1);
 
-		$alpha = $sc if $sc > $alpha;
+        $alpha = $sc if $sc > $alpha;
         last unless $alpha < $beta;
-	}
+    }
 
-	return $alpha;
+    return $alpha;
 }
 
 =back
@@ -249,13 +245,15 @@ The valid range of values C<evaluate> can return is hardcoded to
 to get/set these.
 
 
+=head1 TODO
+
+Implement the missing iterative deepening alphabeta routine. 
+
+
 =head1 SEE ALSO
 
 The author's website for this module: 
-http://brautaset.org/projects/alphabeta/
-
-The author's website for the C library that inspired this module:
-http://brautaset.org/projects/ggtl/
+http://brautaset.org/projects/#games::alphabeta
 
 
 =head1 AUTHOR
