@@ -1,5 +1,5 @@
-Games::AlphaBeta version 0.1
-============================
+Games::AlphaBeta version 0.12
+=============================
 
 Games::AlphaBeta provides a generic implementation of the
 AlphaBeta game-tree search algorithm (also known as MiniMax

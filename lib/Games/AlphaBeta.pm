@@ -5,7 +5,7 @@ use 5.006001;
 use strict;
 use warnings;
 
-our $VERSION = '0.11';
+our $VERSION = '0.12';
 
 =head1 NAME
 
@@ -15,7 +15,7 @@ Games::AlphaBeta - game-tree search with object oriented interface
 
   use Games::AlphaBeta;
   my $game = Games::AlphaBeta->new( ... );
-  
+
   while ($game->abmove) {
           print draw($game->peek_pos);
   }
@@ -235,13 +235,12 @@ sub _alphabeta {
 
 =back
 
-=end
-
 =cut
 
 1;  # ensure using this module works
 
 __END__
+
 
 =head1 BUGS
 
