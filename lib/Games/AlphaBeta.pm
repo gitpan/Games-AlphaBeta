@@ -8,7 +8,7 @@ use strict;
 use warnings;
 
 
-our $VERSION = '0.4.0';
+our $VERSION = '0.4.1';
 
 =head1 NAME
 
@@ -24,7 +24,7 @@ Games::AlphaBeta - game-tree search with object oriented interface
 
     # Methods required by Games::AlphaBeta
     sub apply { ... }
-    sub endpos { ... }
+    sub endpos { ... }          # optional
     sub evaluate { ... }
     sub findmoves { ... }
 
@@ -137,10 +137,11 @@ sub abmove {
         $ply = $self->{ply};
     }
 
-    my $bestmove;
+    my (@moves, $bestmove);
     my $pos = $self->peek_pos;
-    my @moves = $pos->findmoves 
-        or return;
+
+    return if $pos->endpos;
+    return unless @moves = $pos->findmoves;
 
     my $alpha = $self->{alpha};
     my $beta = $self->{beta};
@@ -185,12 +186,18 @@ sub _alphabeta {
     # when we find an end position at every branch (for example,
     # near the end of the game)
     #
-    if (($pos->endpos && ++$self->{found_end}) || $ply <= 0) {
+    if ($pos->endpos) {
+        $self->{found_end}++;
+        return $pos->evaluate;
+    }
+    elsif ($ply <= 0) {
         return $pos->evaluate;
     }
 
-    return $pos->evaluate
-        unless @moves = $pos->findmoves;
+    unless (@moves = $pos->findmoves) {
+        $self->{found_end}++;
+        return $pos->evaluate;
+    }
 
     for my $move (@moves) {
         my ($npos, $sc);

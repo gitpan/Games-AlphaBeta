@@ -6,7 +6,7 @@ use strict;
 use warnings;
 use Data::Dumper;
 
-our $VERSION = '0.1.2';
+our $VERSION = '0.1.3';
 
 =head1 NAME
 
@@ -29,7 +29,7 @@ Games::AlphaBeta
     $p = My::Reversi->new;
     $g = Games::AlphaBeta->new($p);
 
-    while ($g->abmove) {
+    while ($p = $g->abmove) {
         $p->draw;
     }
 
@@ -117,15 +117,20 @@ sub as_string {
 }
 
 
-=item findmoves
+=item findmoves [$own_call]
 
-Return an array of all legal moves at the current position (for
-the current player).
+Return an array of all legal moves at the current position for
+the current player.
+
+If $own_call is true, we have been recursively called by ourself
+to find out if the other player could move. If neither player can
+move, return undef to denote this as an ending position.
+Otherwise return a pass move.
 
 =cut
 
 sub findmoves {
-    my $self = shift;
+    my ($self, $own_call) = @_;
 
     my $b = $self->{board};
     my $size = $self->{size};
@@ -231,8 +236,18 @@ sub findmoves {
             }
         }
     }
-    # Pass if no available moves
-    @moves = undef unless @moves;
+
+    # If current player cannot move, check if other player can
+    # move. If she can't, the game is over. If she can, let the
+    # current player do a pass move.
+    unless (@moves || $own_call) {
+        $self->player(3 - $self->player);
+        if ($self->findmoves(1)) {
+            @moves = undef;
+        }
+        $self->player(3 - $self->player);
+    }
+
     return @moves;
 }
 
@@ -256,30 +271,6 @@ sub evaluate {
     return $me - $not_me;
 }
 
-
-=item endpos 
-
-Return true if the current position is an end position, or undef
-otherwise.
-
-=cut
-
-sub endpos {
-    my $self = shift;
-
-    my $open;
-    my @moves = $self->findmoves;
-
-    if (scalar @moves == 1 && !$moves[0]) {
-        $self->{player} = 3 - $self->{player};
-        @moves = $self->findmoves;
-        $self->{player} = 3 - $self->{player};
-        if (scalar @moves == 1 && !$moves[0]) {
-            return 1;
-        }
-    }
-    return undef;
-}
 
 =item apply $move
 

@@ -2,6 +2,58 @@
 # arch-tag: automatic-ChangeLog--stig@brautaset.org--2004/Games-AlphaBeta--release--0.4
 #
 
+2004-11-20 16:05:58 GMT	Stig Brautaset <stig@brautaset.org>	patch-4
+
+    Summary:
+      added example Othello game + speed improvements
+    Revision:
+      Games-AlphaBeta--release--0.4--patch-4
+
+     o Added self-playing Othello example
+     o Require version 0.4.1 of Games::Sequential.
+     o The endpos() method is not always necessary to terminate a
+       game -- for many games it will be sufficient to just let
+       findmoves() return an empty list. We now support this by
+       providing a default implementation of the endpos() method in
+       the base class (Games::AlphaBeta::Position). This method
+       always returns undef, thus will not terminate the game.
+     o Pod updates
+     o Removed hack to automatically increment module version numbers
+    
+    Patches applied:
+    
+     * stig@brautaset.org--2004/Games-AlphaBeta--devo--0.4--patch-31
+       test for endpos in abmove method as well
+    
+     * stig@brautaset.org--2004/Games-AlphaBeta--devo--0.4--patch-32
+       return with evaluation if no moves were found
+    
+     * stig@brautaset.org--2004/Games-AlphaBeta--devo--0.4--patch-33
+       made missing methods into pure virtual methods
+    
+     * stig@brautaset.org--2004/Games-AlphaBeta--devo--0.4--patch-34
+       removed obsolete _init method
+    
+     * stig@brautaset.org--2004/Games-AlphaBeta--devo--0.4--patch-35
+       findmoves returns empty array if end of game
+    
+     * stig@brautaset.org--2004/Games-AlphaBeta--devo--0.4--patch-36
+       documentation fix in example
+    
+     * stig@brautaset.org--2004/Games-AlphaBeta--devo--0.4--patch-37
+       speed up the Reversi module by not implementing the endpos() method
+    
+     * stig@brautaset.org--2004/Games-AlphaBeta--devo--0.4--patch-38
+       minor tweaks to pod + speeling fix
+    
+     * stig@brautaset.org--2004/Games-AlphaBeta--devo--0.4--patch-39
+       removed =hook & module version inc hack
+    
+     * stig@brautaset.org--2004/Games-AlphaBeta--devo--0.4--patch-40
+       added example of self-playing Othello game
+    
+
+
 2004-09-04 20:13:30 GMT	Stig Brautaset <stig@brautaset.org>	patch-3
 
     Summary:

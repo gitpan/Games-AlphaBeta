@@ -6,7 +6,7 @@ use warnings;
 
 use Carp;
 
-our $VERSION = '0.1.0';
+our $VERSION = '0.1.1';
 
 =head1 NAME
 
@@ -18,7 +18,7 @@ Games::AlphaBeta::Position - base Position class for use with Games::AlphaBeta
     use base Games::AlphaBeta::Position;
 
     sub apply { ... }
-    sub endpos { ... }
+    sub endpos { ... }      # optional
     sub evaluate { ... }
     sub findmoves { ... }
 
@@ -38,70 +38,60 @@ This class is provided for convenience. You don't need this class
 in order to use L<Games::AlphaBeta>. It is, however, also
 possible to make use of this class on its own.
 
-=head1 MISSING METHODS
+=head1 VIRTUAL METHODS
 
-Modules inheriting this class must implement at least these three
-methods (in addition to C<apply()> which is required by
-L<Games::Sequential::Position>): C<endpos()>, C<evaluate()> &amp;
-C<findmoves()>. If you chose to not use this class, you must also
-implement a C<copy()> method which makes a deep copy of a
-position object.
-
-Here's a quick description of how the missing methods must work:
+Modules inheriting this class must implement the following
+methods (in addition to C<apply()> and anything else required by
+L<Games::Sequential::Position>): C<evaluate()> &amp;
+C<findmoves()>. 
 
 =over 4
 
 =item findmoves()
-    
+
 Return an array of all moves possible for the current player at
-the current position. Don't forget to include null moves if the
-player is allowed to pass.
+the current position. Don't forget to return a null move if the
+player is allowed to pass; an empty array returned here denotes
+an ending position in the game.
 
-=item endpos()
+=cut
 
-True if the position is an ending position, i.e. either a draw or
-a win for one of the players.
+sub findmoves { 
+    croak "Called pure virtual method 'findmoves'\n";
+}
 
 =item evaluate()
 
 Return the "fitness" value for the current player at the current
 position.
 
+=cut
+
+sub evaluate { 
+    croak "Called pure virtual method 'evaluate'\n";
+}
+
+
 =back
 
 
-=head1 METHODS
+=head1 METHODS 
 
 The following methods are provided by this class.
 
 =over 4
 
-=item _init [@list]
+=item endpos
 
-I<Internal method.>
+True if the position is an ending position, i.e. either a draw or
+a win for one of the players.
 
-Make sure the missing methods are implemented. You probably want
-to override this though. You might want to call
-C<$self->SUPER::_init(@_)> from within the overriding method.
+Note: Not all games need this method, so the default
+implementation provided by this modules always returns false. 
 
 =cut
 
-sub _init {
-    my $self = shift;
-    $self->SUPER::_init(@_);
-
-    for (qw(endpos evaluate findmoves)) {
-        unless ($self->can($_)) {
-            croak <<'EOF';
-method $_() not implemented. 
-Hint: read the Games::AlphaBeta::Position manpage.
-EOF
-        }
-    }
-
-    return $self;
-}
-
+sub endpos { return undef; }
 
 1;  # ensure using this module works
 __END__
