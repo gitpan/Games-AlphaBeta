@@ -2,6 +2,27 @@
 # arch-tag: automatic-ChangeLog--stig@brautaset.org--2004/Games-AlphaBeta--release--0.4
 #
 
+2004-12-10 23:56:00 GMT	Stig Brautaset <stig@brautaset.org>	patch-5
+
+    Summary:
+      use updated version of Games::Sequential::Position
+    Revision:
+      Games-AlphaBeta--release--0.4--patch-5
+
+    The speed of the copy() method in Games::Sequential::Position was
+    greatly speeded up (and its implementation simplified) by using
+    Storable's dclone() instead of Data::Dumper.
+    
+    Patches applied:
+    
+     * stig@brautaset.org--2004/Games-AlphaBeta--devo--0.4--patch-42
+       drop "use Data::Dumper" line since it is not used
+    
+     * stig@brautaset.org--2004/Games-AlphaBeta--devo--0.4--patch-41
+       use updated version of Games::Sequential::Position
+    
+
+
 2004-11-20 16:05:58 GMT	Stig Brautaset <stig@brautaset.org>	patch-4
 
     Summary:
