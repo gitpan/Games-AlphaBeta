@@ -42,8 +42,8 @@ my $p = {
         player => 1,
         val => 0
 };
-ok(my $g = Games::AlphaBeta->new({
-            initialpos => $p, move => \&move, evaluate => \&evaluate, 
+ok(my $g = Games::AlphaBeta->new($p, {
+            move => \&move, evaluate => \&evaluate, 
             findmoves => \&findmoves, endofgame => \&eog
         }), "Constructor");
 can_ok($g, qw/abmove ply/);

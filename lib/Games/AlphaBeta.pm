@@ -5,7 +5,7 @@ use 5.006001;
 use strict;
 use warnings;
 
-our $VERSION = '0.13';
+our $VERSION = '0.2.0';
 
 =head1 NAME
 
@@ -40,7 +40,7 @@ specific to the game they are implementing. These are:
 Create $newpos as copy of $position and apply $move to it.
 Return $newpos.
 
-=item findmoves($position>
+=item findmoves($position)
 
 Returns a list of all legal moves the current player can perform
 at the current $position. Note that if a pass move is legal in
@@ -80,14 +80,13 @@ Games::AlphaBeta provides these new methods:
 
 I<Internal method.>
 
-Initialize a AlphaBeta object.
+Initialize an AlphaBeta object.
 
 =cut
 
 sub _init {
     my $self = shift;
-    my $args = @_ && ref($_[0]) ? shift : { @_ };
-    my $config = {
+    my %config = (
         # Callbacks
         evaluate    => undef,
         findmoves   => undef,
@@ -97,27 +96,11 @@ sub _init {
         ply         => 2,       # default search depth
         alpha       => -100_000,
         beta        => 100_000,
-    };
+    );
 
-    # Initialise backend
-    $self->SUPER::_init($args);
+    @$self{keys %config} = values %config;
 
-    # Set defaults
-    while (my ($key, $val) = each %{ $config }) {
-        $self->{$key} = $val;
-    }
-
-    # Override defaults
-    while (my ($key, $val) = each %{ $args }) {
-        if (exists $self->{$key}) {
-            $self->{$key} = $val;
-        }
-        else {
-            carp "Non-recognised key/value pair: $key/$val\n";
-        }
-    }
-
-    return $self;
+    return $self->SUPER::_init(@_);
 }
 
 
@@ -229,13 +212,11 @@ sub _alphabeta {
     return $alpha;
 }
 
-=back
-
-=cut
 
 1;  # ensure using this module works
-
 __END__
+
+=back
 
 
 =head1 BUGS
