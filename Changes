@@ -2,6 +2,89 @@
 # arch-tag: automatic-ChangeLog--stig@brautaset.org--2004/Games-AlphaBeta--release--0.4
 #
 
+2004-09-03 23:08:50 GMT	Stig Brautaset <stig@brautaset.org>	patch-2
+
+    Summary:
+      added missing file 
+    Revision:
+      Games-AlphaBeta--release--0.4--patch-2
+
+    Patches applied:
+    
+     * stig@brautaset.org--2004/Games-AlphaBeta--devo--0.4--patch-22
+       bumped version number
+    
+     * stig@brautaset.org--2004/Games-AlphaBeta--devo--0.4--patch-21
+       added Games::AlphaBeta::Position to MANIFEST
+    
+
+
+2004-09-03 23:05:52 GMT	Stig Brautaset <stig@brautaset.org>	patch-1
+
+    Summary:
+      added base class for position + functional Reversi class
+    Revision:
+      Games-AlphaBeta--release--0.4--patch-1
+
+    Added base Games::AlphaBeta::Position class in addition to a
+    fully functional (although simple) Games::AlphaBeta::Reversi
+    class that can be used to create the Reversi game.
+    
+    Patches applied:
+    
+     * stig@brautaset.org--2004/Games-AlphaBeta--devo--0.4--patch-20
+       added precommit hook to increment perlmod minor version number when modified
+    
+     * stig@brautaset.org--2004/Games-AlphaBeta--devo--0.4--patch-19
+       documentation update (pod + README)
+    
+     * stig@brautaset.org--2004/Games-AlphaBeta--devo--0.4--patch-18
+       update Games::AlphaBeta::Reversi to use the new Games::AlphaBeta::Position
+    
+     * stig@brautaset.org--2004/Games-AlphaBeta--devo--0.4--patch-17
+       added Games::AlphaBeta::Position base class
+    
+     * stig@brautaset.org--2004/Games-AlphaBeta--devo--0.4--patch-16
+       specify version for dist explicitly, not from module
+    
+     * stig@brautaset.org--2004/Games-AlphaBeta--devo--0.4--patch-15
+       do not archive generated files
+    
+     * stig@brautaset.org--2004/Games-AlphaBeta--devo--0.4--patch-14
+       support non-8x8 boards in valid_move()
+    
+     * stig@brautaset.org--2004/Games-AlphaBeta--devo--0.4--patch-13
+       added endpos method + made necessary changes
+    
+     * stig@brautaset.org--2004/Games-AlphaBeta--devo--0.4--patch-12
+       slots must not be outside board
+    
+     * stig@brautaset.org--2004/Games-AlphaBeta--devo--0.4--patch-11
+       filled in apply() method
+    
+     * stig@brautaset.org--2004/Games-AlphaBeta--devo--0.4--patch-10
+       add evaluate() method
+    
+     * stig@brautaset.org--2004/Games-AlphaBeta--devo--0.4--patch-9
+       added findmoves() method + valid_move() helper method
+    
+     * stig@brautaset.org--2004/Games-AlphaBeta--devo--0.4--patch-8
+       test that ::Reversi ->can(as_string)
+    
+     * stig@brautaset.org--2004/Games-AlphaBeta--devo--0.4--patch-7
+       allow different size of board in init
+    
+     * stig@brautaset.org--2004/Games-AlphaBeta--devo--0.4--patch-6
+       added ->as_string() to Reversi class
+    
+     * stig@brautaset.org--2004/Games-AlphaBeta--devo--0.4--patch-5
+       added nascent Games::AlphaBeta::Reversi.pm
+    
+     * stig@brautaset.org--2004/Games-AlphaBeta--devo--0.4--patch-4
+       added Yaml file
+    
+
+
 2004-08-29 15:23:40 GMT	Stig Brautaset <stig@brautaset.org>	base-0
 
     Summary:
