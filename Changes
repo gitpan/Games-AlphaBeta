@@ -2,6 +2,41 @@
 # arch-tag: automatic-ChangeLog--stig@brautaset.org--2004/Games-AlphaBeta--release--0.4
 #
 
+2004-09-04 20:13:30 GMT	Stig Brautaset <stig@brautaset.org>	patch-3
+
+    Summary:
+      slight optimisation of Reversi.pm + improve on documentation
+    Revision:
+      Games-AlphaBeta--release--0.4--patch-3
+
+    Patches applied:
+    
+     * stig@brautaset.org--2004/Games-AlphaBeta--devo--0.4--patch-30
+       bump version number for dist
+    
+     * stig@brautaset.org--2004/Games-AlphaBeta--devo--0.4--patch-29
+       fix synopsis
+    
+     * stig@brautaset.org--2004/Games-AlphaBeta--devo--0.4--patch-28
+       filling in documentation a bit
+    
+     * stig@brautaset.org--2004/Games-AlphaBeta--devo--0.4--patch-27
+       use transliteration (tr///) instead of s///
+    
+     * stig@brautaset.org--2004/Games-AlphaBeta--devo--0.4--patch-26
+       inline valid_moves() method in findmoves()
+    
+     * stig@brautaset.org--2004/Games-AlphaBeta--devo--0.4--patch-25
+       only call valid_move() on empty slots in findmoves()
+    
+     * stig@brautaset.org--2004/Games-AlphaBeta--devo--0.4--patch-24
+       tweaked description string
+    
+     * stig@brautaset.org--2004/Games-AlphaBeta--devo--0.4--patch-23
+       only invoke the version-incrementor-script on devo branch
+    
+
+
 2004-09-03 23:08:50 GMT	Stig Brautaset <stig@brautaset.org>	patch-2
 
     Summary:
