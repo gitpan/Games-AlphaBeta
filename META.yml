@@ -1,12 +1,27 @@
-# http://module-build.sourceforge.net/META-spec.html
-#XXXXXXX This is a prototype!!!  It will change in the future!!! XXXXX#
-name:         Games-AlphaBeta
-version:      0.4.5
-version_from: 
-installdirs:  site
-requires:
-    Carp:                          0
-    Games::Sequential:             0.4.3
-
-distribution_type: module
-generated_by: ExtUtils::MakeMaker version 6.17
+---
+name: Games-AlphaBeta
+version: 0.4.6
+author:
+  - 'Stig Brautaset, E<lt>stig@brautaset.orgE<gt>'
+abstract: game-tree search with object oriented interface
+license: perl
+build_requires:
+  File::Spec::Functions: 0
+  Test::More: 0
+provides:
+  Games::AlphaBeta:
+    file: lib/Games/AlphaBeta.pm
+    version: 0.4.6
+  Games::AlphaBeta::Position:
+    file: lib/Games/AlphaBeta/Position.pm
+    version: 0.1.2
+  Games::AlphaBeta::Reversi:
+    file: lib/Games/AlphaBeta/Reversi.pm
+    version: 0.1.5
+  Games::Sequential:
+    file: lib/Games/Sequential.pm
+    version: 0.4.2
+  Games::Sequential::Position:
+    file: lib/Games/Sequential/Position.pm
+    version: 0.3.1
+generated_by: Module::Build version 0.2611

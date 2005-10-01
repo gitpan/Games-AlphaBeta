@@ -1,11 +1,11 @@
 package Games::AlphaBeta::Reversi;
-use base Games::AlphaBeta::Position;
+use base qw(Games::AlphaBeta::Position);
 use Carp;
 
 use strict;
 use warnings;
 
-our $VERSION = '0.1.4';
+our $VERSION = '0.1.5';
 
 =head1 NAME
 
@@ -15,7 +15,7 @@ Games::AlphaBeta
 =head1 SYNOPSIS
 
     package My::Reversi;
-    use base Games::AlphaBeta::Reversi;
+    use base qw(Games::AlphaBeta::Reversi);
 
     # implement drawing routine
     sub draw { ... }
@@ -251,7 +251,7 @@ sub findmoves {
 
 =item evaluate
 
-Evaluate a game position.
+Evaluate a game position and return its fitness value.
 
 =cut
 
@@ -271,8 +271,9 @@ sub evaluate {
 
 =item apply $move
 
-Apply a move to the current position, producing the new position.
-Return reference to itself on succes, undef on error.
+Apply a move to the current position, transforming it into the
+next position. Return reference to itself on succes, undef on
+error.
 
 =cut
 

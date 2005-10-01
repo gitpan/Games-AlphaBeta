@@ -1,12 +1,12 @@
 package Games::AlphaBeta::Position;
-use base Games::Sequential::Position;
+use base qw(Games::Sequential::Position);
 
 use strict;
 use warnings;
 
 use Carp;
 
-our $VERSION = '0.1.1';
+our $VERSION = '0.1.2';
 
 =head1 NAME
 
@@ -15,7 +15,7 @@ Games::AlphaBeta::Position - base Position class for use with Games::AlphaBeta
 =head1 SYNOPSIS
 
     package My::GamePos;
-    use base Games::AlphaBeta::Position;
+    use base qw(Games::AlphaBeta::Position);
 
     sub apply { ... }
     sub endpos { ... }      # optional
@@ -37,6 +37,23 @@ read its documentation.
 This class is provided for convenience. You don't need this class
 in order to use L<Games::AlphaBeta>. It is, however, also
 possible to make use of this class on its own.
+
+=head1 INHERITED METHODS
+
+The following methods are inherited from
+L<Games::Sequential::Position>:
+
+=over
+
+=item new 
+
+=item init 
+
+=item copy
+
+=item player 
+
+=back
 
 =head1 VIRTUAL METHODS
 
