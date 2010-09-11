@@ -34,9 +34,9 @@ DESCRIPTION
     Go, Tic-Tac-Toe and many, many other boardgames.
 
     Users must pass an object representing the initial state of the game as
-    the first argument to "new()". This object must provide the following
-    methods: "copy()", "apply()", "endpos()", "evaluate()" and
-    "findmoves()". This is explained more carefully in
+    the first argument to `new()'. This object must provide the following
+    methods: `copy()', `apply()', `endpos()', `evaluate()' and
+    `findmoves()'. This is explained more carefully in
     Games::AlphaBeta::Position which is a base class you can use to
     implement your position object.
 
@@ -49,7 +49,6 @@ INHERITED METHODS
     peek_move
     move
     undo
-
 METHODS
     _init [@list]
         *Internal method.*
@@ -63,7 +62,7 @@ METHODS
     abmove [$ply]
         Perform the best move found after an AlphaBeta game-tree search to
         depth $ply. If $ply is not specified, the default depth is used (see
-        "ply()"). The best move found is performed and a reference to the
+        `ply()'). The best move found is performed and a reference to the
         resulting position is returned on success, and undef is returned on
         failure.
 
@@ -71,14 +70,14 @@ METHODS
         particularly if the game in question has many possible moves at each
         position.
 
-        If "debug()" is set, some basic debugging is printed as the search
+        If `debug()' is set, some basic debugging is printed as the search
         progresses.
 
     _alphabeta $pos $alpha $beta $ply
         *Internal method.*
 
 BUGS
-    The valid range of values "evaluate()" can return is hardcoded to
+    The valid range of values `evaluate()' can return is hardcoded to
     -99_999 - +99_999 at the moment. Probably should provide methods to
     get/set these.
 
@@ -87,7 +86,7 @@ TODO
 
 SEE ALSO
     The author's website, describing this and other projects:
-    <http://brautaset.org/projects/>
+    http://brautaset.org/projects/
 
 AUTHOR
     Stig Brautaset, <stig@brautaset.org>
